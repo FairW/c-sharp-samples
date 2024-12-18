@@ -6,6 +6,23 @@ meta {
 
 post {
   url: http://localhost:5253/webhook
-  body: none
-  auth: none
+  body: json
+  auth: apikey
+}
+
+headers {
+  Authorization: jarlem-api-key
+}
+
+auth:apikey {
+  key: jarlem-auth-api-key
+  value: JustA3456Value
+  placement: header
+}
+
+body:json {
+  {
+    "Header": "Jarles Test Header",
+    "Body": "Hello, Webhook at DNB!"
+  }
 }

@@ -5,6 +5,16 @@ app.MapGet("/", () => "Hello World!");
 
 app.MapPost("/webhook", async context =>
 {
+    var apiKey2 = context.Request.Headers["Auth"];
+    
+    var apiKey = context.Request.Headers["Authorization"];
+    if (apiKey != "jarlem-api-key")
+    {
+        context.Response.StatusCode = 401;
+        await context.Response.WriteAsync("Unauthorized");
+        return;
+    }
+
     var requestBody = await context.Request.ReadFromJsonAsync<WebhookPayload>();
      
     // Process the received webhook data
