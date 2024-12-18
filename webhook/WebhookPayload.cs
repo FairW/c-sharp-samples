@@ -1,0 +1,1 @@
+public record WebhookPayload(string Header, string Body);
