@@ -4,9 +4,7 @@ var app = builder.Build();
 app.MapGet("/", () => "Hello World!");
 
 app.MapPost("/webhook", async context =>
-{
-    var apiKey2 = context.Request.Headers["Auth"];
-    
+{  
     var apiKey = context.Request.Headers["Authorization"];
     if (apiKey != "jarlem-api-key")
     {
